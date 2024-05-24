@@ -1,0 +1,10 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+.image {
+    padding-bottom: 25px;
+    width: 110px;
+    height: auto;
+    align-content: center;
+}

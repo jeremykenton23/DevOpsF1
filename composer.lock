@@ -34,11 +34,11 @@
                     "Brick\\Math\\": "src/"
                 }
             },
-            "notification-url"git : "https://packagist.org/downloads/",
+            "notification-url git" : "https://packagist.org/downloads/",
             "license": [
                 "MIT"
             ],
-            "description": "Arbitrary-precision arithmetic library",
+            "description": "Arbitrary-precision arithmetic librsary",
             "keywords": [
                 "Arbitrary-precision",
                 "BigInteger",

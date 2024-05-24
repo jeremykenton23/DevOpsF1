@@ -5,7 +5,12 @@
     "keywords": ["laravel", "framework"],
     "license": "MIT",
     "require": {
-        "php": "^8.1",
+        "php": "^8.2",
+        "symfony/css-selector": "^6.0",
+        "symfony/event-dispatcher": "^6.0",
+        "symfony/string": "^6.0",
+        "symfony/yaml": "^6.0",
+        "symfony/console": "^6.0",
         "doctrine/dbal": "^3.8",
         "guzzlehttp/guzzle": "^7.2",
         "laravel/breeze": "^1.26",

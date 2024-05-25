@@ -57,6 +57,9 @@ jobs:
           DB_PASSWORD: secret
         run: php artisan migrate --force
 
+      - name: Build Vite assets
+        run: npm install && npm run build
+
       - name: Run tests
         env:
           DB_CONNECTION: mysql

@@ -34,7 +34,6 @@ Route::middleware('auth')->group(function () {
     Route::get('/laps', [\App\Http\Controllers\LapsController::class, 'index'])->name('laps.index');
     Route::post('/laps', [LapsController::class, 'store'])->name('laps.store');
     Route::get('/laps/create', [\App\Http\Controllers\LapsController::class, 'create'])->name('laps.create');
-    Route::post('/laps/store', [\App\Http\Controllers\LapsController::class, 'store'])->name('laps.store');
     Route::get('/laps/{lap}/edit', [\App\Http\Controllers\LapsController::class, 'edit'])->name('laps.edit');
     Route::put('/laps/{lap}/update', [\App\Http\Controllers\LapsController::class, 'update'])->name('laps.update'); // Use PUT for updating laps
     Route::put('/laps/ajax-validate/{lap}', [\App\Http\Controllers\LapsController::class, 'ajaxValidate'])->name('laps.ajax-validate'); // Use POST for validation

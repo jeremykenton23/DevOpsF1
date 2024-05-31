@@ -1,0 +1,21 @@
+name: Connect to Kubernetes Cluster
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  connect-to-cluster:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v2
+
+      - name: Set up kubectl
+        run: |
+          mkdir -p ~/.kube
+          echo "$KUBE_CONFIG" | base64 -d > ~/.kube/config
+
+      - name: Test connection
+        run: kubectl get nodes

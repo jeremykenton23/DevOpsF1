@@ -10,8 +10,7 @@ on:
 
 jobs:
   build:
-
-    runs-on: ubuntu-latest
+    runs-on: [self-hosted, Linux, ARM64]
 
     services:
       mysql:
@@ -78,3 +77,24 @@ jobs:
 
       - name: Push Docker image
         run: docker push ${{ secrets.DOCKER_USERNAME }}/f1registration
+
+  deploy:
+    runs-on: [self-hosted, Linux, ARM64]
+    needs: build
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v2
+
+      - name: Set up kubectl
+        uses: azure/setup-kubectl@v1
+        with:
+          version: 'latest'
+
+      - name: Set up kubeconfig
+        env:
+          KUBE_CONFIG: ${{ secrets.KUBE_CONFIG }}
+        run: echo "${KUBE_CONFIG}" > $HOME/.kube/config
+
+      - name: Deploy to Kubernetes
+        run: kubectl apply -f deploy.yaml

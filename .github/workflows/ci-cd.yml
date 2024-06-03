@@ -46,6 +46,17 @@ jobs:
       - name: Generate app key
         run: php artisan key:generate
 
+      - name: Install Node.js
+        uses: actions/setup-node@v2
+        with:
+          node-version: '18'
+
+      - name: Install npm dependencies
+        run: npm install
+
+      - name: Build Vite assets
+        run: npm run build
+
       - name: Run migrations
         env:
           DB_CONNECTION: mysql
@@ -55,9 +66,6 @@ jobs:
           DB_USERNAME: root
           DB_PASSWORD: secret
         run: php artisan migrate --force
-
-      - name: Build Vite assets
-        run: npm install && npm run build
 
       - name: Run tests
         env:
@@ -98,4 +106,3 @@ jobs:
 
       - name: Deploy to Kubernetes
         run: kubectl apply -f deploy.yaml
-
